@@ -19,7 +19,8 @@ export default {
 
 body{
   background-color: #F2F5F7 !important;
-  padding-left: 10%;
+  padding-left: 12%;
+  padding-right: 3%;
 }
 
 #page{
@@ -52,6 +53,7 @@ body{
     right: 0px;
     padding-bottom: 45%;
     padding-right: 5%;
+    border-radius: 0% 10% 10% 0%;
     background-color: #151D65;
   }
 

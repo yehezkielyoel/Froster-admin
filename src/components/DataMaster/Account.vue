@@ -60,7 +60,7 @@
             
     </b-modal>
     <!-- modal hapus -->
-    <b-modal hide-footer hide-header id="modal-delete" centered>
+    <b-modal v-model="dialogdel" hide-footer hide-header id="modal-delete" centered>
         <div id="modDel">
         <h1> Are you sure? </h1>
             <b-button variant="outline-danger" @click="confirmdelete" style="font-weight: bold;" >yes</b-button>
@@ -75,7 +75,6 @@
   export default {
     data() {
       return {
-        adding: true,
         edititem: null,
         dialog: false,
         dialogdel: false,

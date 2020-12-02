@@ -9,7 +9,7 @@
       </div>
     </h1>
     <br>
-    <b-button variant="danger">Print</b-button>
+    <b-button variant="danger"><b-icon icon="printer"></b-icon> Print</b-button>
     <br><br>
 
     <b-table id="tabelAcc" striped hover 

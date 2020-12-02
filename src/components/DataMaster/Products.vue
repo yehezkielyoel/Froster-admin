@@ -9,7 +9,7 @@
       </div>
     </h1>
     <br>
-    <b-button variant="danger">Add Product</b-button>
+    <b-button @click="dialog" variant="danger"><b-icon icon="plus"></b-icon> Add Product</b-button>
     <br><br>
 
     <b-table id="tabelAcc" striped hover 
@@ -29,8 +29,17 @@
 
     </b-table>
     <!-- modal edit -->
-    <b-modal hide-footer hide-header id="modal-center" centered>
-        <h1> Edit Product </h1>
+    <b-modal v-model="dialog" hide-footer hide-header id="modal-center" centered>
+      <b-card>
+        <b-card-title>
+          <span class="headline"
+              v-if="adding== true"> Form - Add </span>
+          <span class="headline"
+              v-else>Form Edit </span>
+        </b-card-title>
+
+        <b-card-text>
+          <b-container>
               <b-form-input type="text"
                   v-model="form.product_name"
                   placeholder="Product name"
@@ -46,17 +55,34 @@
                   placeholder="Price"
                   required></b-form-input>
               <br>
-            <b-button @click="edit(form)" class="mr-1">save</b-button>
+          </b-container>
+        </b-card-text>
+
+        <!-- <b-card> -->
             <b-button variant="light" style="color: #151D65;" @click="cancel" class="mr-1">cancel</b-button>
-            
+            <b-button v-if="adding == true" 
+              @click="save" 
+              class="mr-1">
+              Save
+            </b-button>
+            <b-button v-else
+              @click="edit(form)" 
+              class="mr-1">
+              Save
+            </b-button>
+        <!-- </b-card> -->
+      </b-card>
     </b-modal>
+
     <!-- modal hapus -->
-    <b-modal hide-footer hide-header id="modal-delete" centered>
+    <b-modal v-model="dialogdel" hide-footer hide-header id="modal-delete" centered>
+      <b-card>
         <div id="modDel">
         <h1> Are you sure? </h1>
-            <b-button variant="outline-danger" @click="confirmdelete" style="font-weight: bold;" >yes</b-button>
-            <b-button variant="outline-light" @click="cancel" style="font-weight: bold; color: #151D65; ">no</b-button>
+            <b-button variant="outline-danger" @click="confirmdelete" style="font-weight: bold;" >Yes</b-button>
+            <b-button variant="outline-light" @click="cancel" style="font-weight: bold; color: #151D65; ">No</b-button>
         </div>
+      </b-card>
     </b-modal>
   </div>
 </body>
@@ -105,7 +131,6 @@
             this.edititem = null;
             this.adding = true;
             this.dialogdel = false;
-            this.dialognote = false;
         },
       deleteItem(item) {
             this.dialogdel = true;
