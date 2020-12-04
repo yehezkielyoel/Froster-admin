@@ -3,16 +3,16 @@
   <div >
     <h1 id="accountTitle" class="d-flex justify-content-between align-items-center"> 
       Transaction
-      <div id="admin">
-        <b-icon icon="person-fill" ></b-icon>
+      <div class="admin">
+        <b-icon icon="person-circle" ></b-icon>
         Admin
       </div>
     </h1>
     <br>
-    <b-button variant="danger"><b-icon icon="printer"></b-icon> Print</b-button>
+    <b-button variant="danger" ><b-icon icon="printer"></b-icon> Print</b-button>
     <br><br>
 
-    <b-table id="tabelAcc" striped hover 
+    <b-table class="tabelAcc" striped hover 
       :items="items" 
       :fields="fields" 
       :borderless="borderless">
@@ -117,34 +117,6 @@
             this.dialogdel = false;
             this.dialognote = false;
         },
-      deleteItem(item) {
-            this.dialogdel = true;
-            this.edititem = item;
-        },
-      confirmdelete() {
-            this.items.splice(this.todos.indexOf(this.edititem), 1);
-            this.dialogdel = false;
-        },
-      editItem(item) {
-            this.adding = false;
-            this.form = {
-                name: item.name,
-                email: item.email,
-                password: item.password,
-                telp: item.telp,
-                address: item.address,
-            };
-            this.dialog = true;
-            this.edititem = item;
-        },
-      edit(form){
-            this.edititem.name = form.name;
-            this.edititem.email = form.email;
-            this.edititem.password = form.password;
-            this.edititem.telp = form.telp;
-            this.edititem.address = form.address;
-            this.cancel();
-        },
       resetForm() {
             this.form = {
                 name: null,
@@ -153,7 +125,7 @@
                 telp: null,
                 address: null,
             };
-        },  
+        },
 
     },
   };

@@ -3,24 +3,24 @@
   <div >
     <h1 id="accountTitle" class="d-flex justify-content-between align-items-center"> 
       Account
-      <div id="admin">
-        <b-icon icon="person-fill" ></b-icon>
+      <div class="admin">
+        <b-icon icon="person-circle" ></b-icon>
         Admin
       </div>
     </h1>
     <br><br><br>
 
-    <b-table id="tabelAcc" striped hover 
+    <b-table class="tabelAcc" striped hover 
       :items="items" 
       :fields="fields" 
       :borderless="borderless">
 
       <template #cell(action)="item">
-        <b-button variant="link" id="iconEdit" @click="editItem(item)" v-b-modal.modal-center>
+        <b-button variant="link" class="iconEdit" @click="editItem(item)" v-b-modal.modal-center>
           <b-icon icon="pencil-fill"></b-icon>
         </b-button>
 
-        <b-button variant="link" id="iconDelete" @click="deleteItem(item)" v-b-modal.modal-delete>
+        <b-button variant="link" class="iconDelete" @click="deleteItem(item)" v-b-modal.modal-delete>
           <b-icon icon="X"></b-icon>
         </b-button>  
       </template>
@@ -28,40 +28,51 @@
     </b-table>
     <!-- modal edit -->
     <b-modal hide-footer hide-header id="modal-center" centered>
-        <div id="editForm"><h3> Edit Account </h3></div>
-              <b-form-input type="text"
+        <div class="editForm"> Edit Account </div>
+              <b-icon icon="person-fill" class="iconForm"></b-icon>
+              <b-form-input style="background-color: #CED4DA;"
+                  type="text"
                   v-model="form.name"
-                  placeholder="Name"
-                  required></b-form-input>
-              <br>
-              <b-form-input
-                  v-model="form.email"
-                  placeholder="Email"
-                  required></b-form-input>
-              <br>
-              <b-form-input
-                  v-model="form.password"
-                  placeholder="Password"
-                  required></b-form-input>
-              <br>
-              <b-form-input
-                  v-model="form.telp"
-                  placeholder="Telp"
-                  required></b-form-input>
-              <br>
-              <b-form-input
-                  v-model="form.address"
-                  placeholder="address"
+                  placeholder="   Name"
                   required>
               </b-form-input>
+            
+              <b-icon icon="envelope-fill" class="iconForm"></b-icon>
+              <b-form-input 
+                  v-model="form.email"
+                  placeholder="   Email"
+                  disabled></b-form-input>
+              <div style="color: #CDCFDE;">Admin can't change email</div>
+              
+              <b-icon icon="lock-fill" class="iconForm"></b-icon>
+              <b-form-input 
+                  type="password"
+                  v-model="form.password"
+                  placeholder="   Password"
+                  disabled></b-form-input>
+              <div style="color: #CDCFDE;">Admin can't change password</div>    
+              
+              <b-icon icon="telephone-fill" class="iconForm"></b-icon>
+              <b-form-input style="background-color: #CED4DA;"
+                  v-model="form.telp"
+                  placeholder="   Telp"
+                  required></b-form-input>
+              
+                <b-icon icon="credit-card2-front-fill" class="iconForm"></b-icon>
+                <b-form-textarea style="background-color: #CED4DA;"
+                  v-model="form.address"
+                  placeholder="   address"
+                  required
+                  no-resize>
+              </b-form-textarea>
               <br>
-            <b-button @click="edit(form)" class="mr-1">save</b-button>
-            <b-button variant="light" style="color: #151D65;" @click="cancel" class="mr-1">cancel</b-button>
+            <b-button @click="edit(form)" style="background-color: #151D65; font-weight: bold;" class="mr-1">save</b-button>
+            <b-button variant="light" style="color: #151D65; font-weight: bold;" @click="cancel" class="mr-1">cancel</b-button>
             
     </b-modal>
     <!-- modal hapus -->
     <b-modal v-model="dialogdel" hide-footer hide-header id="modal-delete" centered>
-        <div id="modDel">
+        <div class="modDel">
         <h1> Are you sure? </h1>
             <b-button variant="outline-danger" @click="confirmdelete" style="font-weight: bold;" >yes</b-button>
             <b-button variant="outline-light" @click="cancel" style="font-weight: bold; color: #151D65; ">no</b-button>
@@ -78,7 +89,6 @@
         edititem: null,
         dialog: false,
         dialogdel: false,
-        dialognote: false,
         busy: true,
         fields: [
           { key: 'no',label: 'No'},
@@ -114,7 +124,6 @@
             this.edititem = null;
             this.adding = true;
             this.dialogdel = false;
-            this.dialognote = false;
             this.$bvModal.hide('modal-center')
         },
       deleteItem(item) {

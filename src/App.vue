@@ -1,12 +1,11 @@
 <template>
-  <v-app>
-    <Bars/>
+  <div id="app">
     <v-main>
-      <v-container fluid>
+      <b-container fluid>
         <router-view></router-view>
-      </v-container>
+      </b-container>
     </v-main>
-  </v-app>
+  </div>
 </template>
 
 <script>
@@ -28,19 +27,26 @@ body{
   padding-left: 10%;
 }
 
-#DatMas{
+.DatMas{
     text-align: center;
     color: #151D65;
     font-size: 100%;
     font-weight: bold;
   }
 
-  #sidebar{
+  .sidebar{
     background-color: #151D65;
     border-radius: 0% 10% 10% 0%;
   }
 
-  #logout{
+  .iconForm{
+    color: #151D65;
+    position: relative;
+    top: 30px;
+    left: 5px;
+  }
+
+  .logout{
     text-align: center;
     color: #151D65;
     font-size: 100%;
@@ -57,13 +63,22 @@ body{
     background-color: #151D65;
   }
 
-  #modDel{
+  .titleProduct{
+    text-align: center;
+    font-weight: bold;
+    color: #151D65;
+    font-size: 30px;
+  }
+
+  
+
+  .modDel{
     font-weight:900;
     color:#151D65;
     text-align: center;
   }
 
-  #admin{
+  .admin{
     padding-right: 15%;
   }
 
@@ -74,25 +89,26 @@ body{
     padding-top: 2%;
   }
 
-  #tabelAcc{
+  .tabelAcc{
     color: #151D65;
   }
 
-  #iconEdit{
+  .iconEdit{
     color: #61AB43;
   }
 
-  #iconDelete{
+  .iconDelete{
     color: #D9534F;
   }
 
-  #editForm{
+  .editForm{
     color: #151D65;
     font-weight: bold;
+    font-size: 30px;
     text-align: center;
   }
 
-  #saveBtn{
+  .saveBtn{
     color: #151D65;
   }
 </style>
